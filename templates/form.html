@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <title>VSCO Zine</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        div {
+            background-color: white;
+            width: 300px;
+            height: 300px;
+            padding-top: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        input {
+            border: none;
+            border-bottom: 1px solid black;
+            font-size: 15px;
+        }
+        
+        input:focus {
+            outline: none;
+        }
+        
+        input[type=checkbox]:checked {
+            background-color: purple;
+        }
+        
+        #submit_but {
+            background-color: white;
+            border: 1px dotted black;
+            border-radius: 12px;
+            font-size: 15px;
+            padding: 10px;
+        }
+        
+        #submit_but:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form action="/zine" method="POST">
+            <p>VSCO @ <input style="width: 225px;" type="text" name="username" value="bionicpinkytoe" /></p>
+            <p>Duration: <input style="width: 230px;" type="text" name="daterange" value="12/01/2020 - 12/08/2020" /></p>
+            <p>Include Captions: <input type="checkbox" name="captions" /></p>
+            <p><input id="submit_but" type="submit" value="Make zine" /></p>
+        </form>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <script>
+        $(function() {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function(start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        });
+    </script>
+</body>
+
+</html>

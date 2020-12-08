@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{username}}'s Zine</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div>
+            <p>{{start}}<br> ↳{{end}}</p>
+            <p>@{{username}}</p>
+        </div>
+        {%for elm in img_list%}
+        <div>
+            <img style="width: 100%" src="http://{{ elm[0] }}" />
+            <p>{{ elm[1] }}</p>
+        </div>
+        {%endfor%}
+        <img>
+
+    </div>
+    <script src="{{url_for('static', filename='bindery.min.js')}}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+    <script>
+        Bindery.makeBook({
+            content: '#content',
+            rules: [
+                Bindery.PageBreak({
+                    selector: 'img',
+                    position: 'before'
+                }),
+            ],
+            view: Bindery.View.FLIPBOOK,
+
+        });
+        $(".📖-controls").append("<p > Redo Settings </p>");
+    </script>
+
+</body>
+
+</html>
